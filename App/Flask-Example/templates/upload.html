@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload an Excel/CSV for PowerBI Optimization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .dropzone {
+            width: 300px;
+            height: 150px;
+            border: 2px dashed #aaa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .btn-upload {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Upload a file</h2>
+<form method="post" enctype="multipart/form-data" id="upload-form">
+    <div class="dropzone" id="dropzone">Drop file here or click to select</div>
+    <input type="file" name="file" id="file-input" style="display: none;">
+    <button type="submit" class="btn-upload">Upload</button>
+</form>
+
+{% if link %}
+    <br><br>
+    <h3>Download Optimized File:</h3>
+    <a href="{{ link }}">Click here to download</a>
+{% endif %}
+
+{% if data %}
+    <br><br>
+    <h3>Optimized Data:</h3>
+    {{ data|safe }}  <!-- Render the HTML table -->
+{% endif %}
+
+<script>
+    // JavaScript to handle the drag-and-drop feature
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('file-input');
+
+    dropzone.addEventListener('click', () => {
+        fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (event) => {
+        if (event.target.files.length) {
+            dropzone.innerText = event.target.files[0].name;
+        }
+    });
+</script>
+
+</body>
+</html>
