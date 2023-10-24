@@ -7,8 +7,8 @@ This Flask application allows users to upload financial documents (Excel/CSV fil
 
 1. **Clone the repository**:
     ```bash
-    git clone [YOUR REPO URL]
-    cd [YOUR REPO DIRECTORY]
+    git clone [[YOUR REPO URL]](https://github.com/jrein77/GPTxBI.git)
+    cd Flask-Example
     ```
 
 2. **Set up a virtual environment** (Recommended):
